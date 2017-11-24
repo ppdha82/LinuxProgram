@@ -1,0 +1,4 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/home/ppdha82/Project/SRN4000/01_trunk/third_party/ntn/dm8167-software/ti_tools/linux_lsp/kernel/linux-dvr-rdk/arch/arm/mach-omap2'
+let g:netrw_dirhist_2='/home/ppdha82/.vim/plugin'

@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/ppdha82/Project/SEJONG/01_trunk/open_source/glibc/glibc-2.8'
+let g:netrw_dirhist_2='/home/ppdha82/Project/SEJONG/009_branches_SRN1673S/SRN1673S_1.02/proprietary/gui/qt'
+let g:netrw_dirhist_3='/home/ppdha82/videosummary/009_nvr_vs_TI8167/drivers/msg_proc'
+let g:netrw_dirhist_4='/home/ppdha82/videosummary/009_nvr_vs_TI8167/dvr_rdk/mcfw/src_bios6/main_app/src'
+let g:netrw_dirhist_5='/home/ppdha82/Project/SEJONG/03_branches_dev_XRN2010_1.02/proprietary/dvr_app_unittest/unittest/dec/mercury'
