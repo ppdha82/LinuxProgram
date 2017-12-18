@@ -12,6 +12,20 @@ public:
 		LinkHead = NULL;
 	}
 
+    int sizeOfIndex(void)
+    {
+        Node* temp = LinkHead;
+        int count = 0;
+
+        while (temp != NULL)
+        {
+            temp = temp->getTail();
+            count++;
+        }
+
+        return count;
+    }
+
 	void CreateLinkToFirst(std::string txt)
 	{
 		Node* temp = new Node();
@@ -34,7 +48,7 @@ public:
 		prevLink->setTail(temp);
 	}
 
-	void InsertLinkToIndex(std::string txt, int index)
+	void InsertLinkToIndex(std::string txt, int index = 0)
 	{
 		int linkSize = 0;
 		int countIndex = index;
@@ -109,6 +123,27 @@ public:
 		}
 	}
 
+    void ImplementKeyword(std::string source, std::string destination)
+    {
+        Node* temp = LinkHead;
+
+        while (temp->getTail() != NULL)
+        {
+            if (temp->getText().find(source) != std::string::npos)
+            {
+                std::cout << "Found text(" << source << ") : " << temp->getText() << std::endl;
+                std::string tempString;
+                int targetSize = destination.length();
+                int firstPositionOfSource = temp->getText().find(source);
+                tempString = temp->getText();
+                tempString.replace(firstPositionOfSource, targetSize, destination);
+                std::cout << "Replace text(" << temp->getText() << ") = " << tempString << std::endl;
+                temp->setText(tempString);
+            }
+            temp = temp->getTail();
+        }
+    }
+
 	void PrintAll(void)
 	{
 		Node* currentPoint = LinkHead;
@@ -119,5 +154,6 @@ public:
 			currentPoint = currentPoint->getTail();
 		}
 		std::cout << currentPoint->getText() << std::endl;
+        std::cout << "size of linked list = " << sizeOfIndex() << std::endl;
 	}
 };

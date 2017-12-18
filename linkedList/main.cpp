@@ -21,7 +21,10 @@ int main(void)
     rainbow->InsertLinkToIndex("²¨Áü", 19);
     rainbow->RemoveLinkAt(0);
     rainbow->RemoveLinkAt(5);
+    rainbow->InsertLinkToIndex("¿Ø°É");
 
+    rainbow->PrintAll();
+    rainbow->ImplementKeyword("¹¹¶ó", "¹¹¶óÄ«³ë");
     rainbow->PrintAll();
 
     return 0;
