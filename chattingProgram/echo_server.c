@@ -22,6 +22,7 @@
 #include <time.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/wait.h>
 #include <netinet/in.h>
 
 #define	BUF_SIZE		1024
@@ -29,6 +30,7 @@
 #define	LISTEN_COUNT	5
 
 void error_handling(char *message);
+void childHandler(int signal);
 
 int main(int argc, char *argv[])
 {
@@ -40,6 +42,10 @@ int main(int argc, char *argv[])
 	struct sockaddr_in serv_addr;
 	struct sockaddr_in clnt_addr;
 	int clnt_addr_size;
+	pid_t pid;
+	struct sockaddr_in peerSocket;
+
+	signal(SIGCHLD, (void *)childHandler);
 
 	if (argc != 2)
 	{
@@ -69,22 +75,45 @@ int main(int argc, char *argv[])
 		error_handling("listen() error");
 	}
 
-	clnt_addr_size = sizeof(clnt_addr);
-
-	clnt_sock = accept(serv_sock, (struct sockaddr*)&clnt_addr, &clnt_addr_size);
-	if (clnt_sock < 0)
+	while (1)
 	{
-		error_handling("accept() error");
-	}
+		clnt_addr_size = sizeof(clnt_addr);
 
-	while((str_len = read(clnt_sock, message, BUF_SIZE)) != 0)
-	{
-		write(clnt_sock, message, str_len);
-		write(1, message, str_len);
-	}
+		while((clnt_sock = accept(serv_sock, (struct sockaddr*)&clnt_addr, &clnt_addr_size)) >= 0)
+		{
+			getpeername(clnt_sock, (struct sockaddr_in*)&peerSocket, &clnt_addr_size);
+#if 0
+			char peerName[sizeof(peerSocket.sin_addr) + 1] = {0, };
+			sprintf (peerName, "%s", inet_ntoa(peerSocket.sin_addr));
 
+			if (strcmp(peerName, "0.0.0.0") != 0)
+			{
+				error_handling("getpeername() error");
+			}
+#endif			
+			pid = fork();
+
+			if (pid == 0)
+			{
+				close(serv_sock);
+				while((str_len = read(clnt_sock, message, BUF_SIZE)) != 0)
+				{
+					write(clnt_sock, message, str_len);
+					write(1, message, str_len);
+				}
+				error_handling("program exit");
+				return 0;
+			}
+		}
+#if 1
+		if (clnt_sock < 0)
+		{
+			close(clnt_sock);
+			error_handling("accept() error");
+		}
+#endif
+	}
 	close(serv_sock);
-	close(clnt_sock);
 	return 0;
 }
 
@@ -94,4 +123,19 @@ void error_handling(char *message)
 	fputs(message, stderr);
 	fputc('\n', stderr);
 	exit(1);
+}
+
+void childHandler(int signal)
+{
+	int status;
+	pid_t spid;
+
+	while ((spid = waitpid (-1, &status, WNOHANG)) > 0)
+	{
+		printf("자식 프로세스 wait 한 결과 \n");
+		printf("============================\n");
+		printf("%15s:%3d\n", "PID", spid);
+		printf("%15s:%3d\n", "Exit Value", WEXITSTATUS(status));
+		printf("%15s:%3d\n", "Exit Stat", WIFEXITED(status));
+	}
 }
