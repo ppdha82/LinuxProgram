@@ -25,9 +25,14 @@
 #include <sys/socket.h>
 #include <sys/wait.h>
 #include <netinet/in.h>
+#include <unistd.h>
 
+
+//#define	__TEST__
 // googletest
+#if defined (__TEST__)
 #include <gtest/gtest.h>
+#endif
 
 #define	BUF_SIZE		1024
 #define	TEMP_BUF_SIZE	20
@@ -36,7 +41,7 @@
 void error_handling(char *message);
 void childHandler(int signal);
 
-
+#if defined(__TEST__)
 int getBuildNumber(char* build, char* project)
 {
 	char* p = NULL;
@@ -63,12 +68,11 @@ TEST(getBuildNumberTest, HandlesPositiveInput)
 	EXPECT_TRUE(strcmp("ABC1400", "ABC1400") == 0);
 	EXPECT_TRUE(strcmp("ABC1400", "ABC1401") < 0);
 }
-
-#define	TEST
+#endif	/* #if defined(__TEST__) */
 
 int main(int argc, char *argv[])
 {
-#if defined(TEST)
+#if defined(__TEST__)
 	testing::InitGoogleTest(&argc, argv);
 	RUN_ALL_TESTS();
 #else
@@ -78,12 +82,12 @@ int main(int argc, char *argv[])
 	int str_len;
 	
 	struct sockaddr_in serv_addr;
-	struct sockaddr_in clnt_addr;
-	int clnt_addr_size;
+	struct sockaddr clnt_addr;
+	socklen_t clnt_addr_size;
 	pid_t pid;
 	struct sockaddr_in peerSocket;
 
-	signal(SIGCHLD, (void *)childHandler);
+	signal(SIGCHLD, (void (*)(int)) childHandler);
 
 	if (argc != 2)
 	{
@@ -119,7 +123,7 @@ int main(int argc, char *argv[])
 
 		while((clnt_sock = accept(serv_sock, (struct sockaddr*)&clnt_addr, &clnt_addr_size)) >= 0)
 		{
-			getpeername(clnt_sock, (struct sockaddr_in*)&peerSocket, &clnt_addr_size);
+			getpeername(clnt_sock, (struct sockaddr*)&peerSocket, &clnt_addr_size);
 #if 0
 			char peerName[sizeof(peerSocket.sin_addr) + 1] = {0, };
 			sprintf (peerName, "%s", inet_ntoa(peerSocket.sin_addr));
@@ -150,7 +154,7 @@ int main(int argc, char *argv[])
 #endif
 	}
 	close(serv_sock);
-#endif
+#endif	/* #if defined(__TEST__) */
 	return 0;
 }
 
