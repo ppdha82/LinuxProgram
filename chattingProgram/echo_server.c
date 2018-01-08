@@ -20,10 +20,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <assert.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/wait.h>
 #include <netinet/in.h>
+
+// googletest
+#include <gtest/gtest.h>
 
 #define	BUF_SIZE		1024
 #define	TEMP_BUF_SIZE	20
@@ -32,8 +36,42 @@
 void error_handling(char *message);
 void childHandler(int signal);
 
+
+int getBuildNumber(char* build, char* project)
+{
+	char* p = NULL;
+	if (build == NULL || project == NULL) {
+		return -1;
+	}
+	if (strlen(build) <= strlen(project)) {
+		return -1;
+	}
+	if (strstr(build, project) == NULL) {
+		return -1;
+	}
+	p = build + strlen(project);
+	return atoi(p);
+}
+
+TEST(getBuildNumberTest, HandlesPositiveInput)
+{
+	EXPECT_EQ(1301, getBuildNumber("ABC1301", "ABC"));
+	EXPECT_EQ(1401, getBuildNumber("ABC1401", "ABC"));
+	EXPECT_EQ(-1, getBuildNumber("CIH1401", "ABC"));
+	EXPECT_EQ(-1, getBuildNumber("CIH1401", "ABC"));
+	EXPECT_TRUE(strcmp("ABC1400", "ABC1301") > 0);
+	EXPECT_TRUE(strcmp("ABC1400", "ABC1400") == 0);
+	EXPECT_TRUE(strcmp("ABC1400", "ABC1401") < 0);
+}
+
+#define	TEST
+
 int main(int argc, char *argv[])
 {
+#if defined(TEST)
+	testing::InitGoogleTest(&argc, argv);
+	RUN_ALL_TESTS();
+#else
 	int serv_sock;
 	int clnt_sock;
 	char message[BUF_SIZE];
@@ -101,8 +139,6 @@ int main(int argc, char *argv[])
 					write(clnt_sock, message, str_len);
 					write(1, message, str_len);
 				}
-				error_handling("program exit");
-				return 0;
 			}
 		}
 #if 1
@@ -114,6 +150,7 @@ int main(int argc, char *argv[])
 #endif
 	}
 	close(serv_sock);
+#endif
 	return 0;
 }
 
