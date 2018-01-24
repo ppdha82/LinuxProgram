@@ -27,7 +27,6 @@
 #include <netinet/in.h>
 #include <unistd.h>
 
-
 //#define	__TEST__
 // googletest
 #if defined (__TEST__)
@@ -145,13 +144,12 @@ int main(int argc, char *argv[])
 				}
 			}
 		}
-#if 1
+
 		if (clnt_sock < 0)
 		{
 			close(clnt_sock);
 			error_handling("accept() error");
 		}
-#endif
 	}
 	close(serv_sock);
 #endif	/* #if defined(__TEST__) */

@@ -1,0 +1,8 @@
+project (echo_client)
+cmake_minimum_required(VERSION 3.5)
+LINK_DIRECTORIES(/usr/lib)
+LINK_LIBRARIES(pthread gtest gtest_main)
+INCLUDE_DIRECTORIES(/usr/include/gtest)
+set (CMAKE_C_COMPILER "g++")
+set (SRC_FILES echo_client.c)
+ADD_EXECUTABLE(echo_client echo_client.c)
