@@ -31,11 +31,13 @@ let mapleader = ","
 " turn syntax highlighting on
 syntax on
 if has("gui_running")
-    colorscheme wombat256
-    set gfn=DejaVu_Sans_Mono:h10:cANSI
+    colorscheme darkblue
+    "set gfn=DejaVu_Sans_Mono:h10:cANSI
+	"set guifont=Monospace\ 10
+	set gfn=Monospace\ 10
 else
     set t_Co=256
-    colorscheme wombat256
+    colorscheme pablo
 endif
 " show textwidth line
 set colorcolumn=120
@@ -192,7 +194,7 @@ let @s='bi${ea}'
 " implement method. Turns 'int foo();' into 'int foo()\n{\n}\n'
 
 "au! Syntax mixed  so $vim/syntax/cmix.vim
-
+let g:neocomplcache_enable_at_startup=1
 " Install Vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -209,6 +211,8 @@ Bundle 'git://git.wincent.com/command-t.git'
 Plugin 'AutoComplPop'
 Plugin 'snipMate'
 Plugin 'Source-Explorer-srcexpl.vim'
+
+Plugin 'sudo.vim'
 
 " pathogen
 execute pathogen#infect()
