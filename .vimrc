@@ -213,6 +213,15 @@ Plugin 'snipMate'
 Plugin 'Source-Explorer-srcexpl.vim'
 
 Plugin 'sudo.vim'
+"git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdtree-git-plugin
+Plugin 'nerdtree-git-plugin'
+"Plugin 'git-diff'
+"Plugin 'fugitive.vim'
+"Plugin 'github-theme'
+"Plugin 'gitvimdiff'
+"Plugin 'git-commit'
+"Plugin 'gitdiff.vim'
+"Plugin 'gitvimrc.vim'
 
 " pathogen
 execute pathogen#infect()
