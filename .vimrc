@@ -213,9 +213,18 @@ Plugin 'snipMate'
 Plugin 'Source-Explorer-srcexpl.vim'
 
 Plugin 'sudo.vim'
+
 "git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdtree-git-plugin
 Plugin 'nerdtree-git-plugin'
-"Plugin 'git-diff'
+
+"git config --global diff.tool vimdiff
+"git config --global merge.tool vimdiff
+"git config --global difftool.prompt false
+"git config --global alias.d difftool
+
+"http://www.vim.org/scripts/script.php?script_id=1846
+Plugin 'git-diff'
+
 "Plugin 'fugitive.vim'
 "Plugin 'github-theme'
 "Plugin 'gitvimdiff'
