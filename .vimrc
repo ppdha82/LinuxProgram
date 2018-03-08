@@ -107,6 +107,7 @@ let g:DoxygenToolkit_returnTag="@return "
 let g:DoxygenToolkit_authorName="Gerhard Gappmeier <gerhard.gappmeier@ascolab.com>"
 "let g:DoxygenToolkit_licenseTag="My own license"
 let g:DoxygenToolkit_interCommentTag = "*"
+let g:indentLine_faster = 1
 
 " Enhanced keyboard mappings
 "
@@ -140,6 +141,7 @@ map <C-F7> :!make gui rs485_422 net config -j8<CR>
 "imap <C-F7> <ESC>:w<CR>:!make gui rs485_422 net config -j8<CR>
 " run svn diff to diff text 
 map <F8> : !svn diff > diff<CR>
+map <S-F8> : !git diff > diff<CR>
 " build all
 map <F9> : !make -j8<CR>
 map <S-F9> : !make install -j8<CR>
