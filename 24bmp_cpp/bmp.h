@@ -67,7 +67,7 @@ class BitMap {
 
 		void makeCopy(char * filename);
 		void makeHeader(char* filename);
-		void changeHeader(char* filename, int offset, int value);
+		void changeHeader(char* filename, int offset, char value);
 		void attachRawData(char* filename);
 		void convert24BitTo16Bit(char * filename);
 		void writePixel(int i,int j, int R, int G, int B);
@@ -169,6 +169,7 @@ void BitMap::dispPixelData()
 	for(int i=0;i<m_pixelArraySize;i++)
 	{
 		std::cout<<(unsigned int)m_pixelData[i]<<" ";   
+		if (i % 0x10)	std::cout << std::endl;
 	}
 	std::cout<<"\n";
 }
@@ -221,18 +222,19 @@ enum {
 	BLUE,
 };
 
-void BitMap::changeHeader(char* filename, int offset, int value)
+void BitMap::changeHeader(char* filename, int offset, char value)
 {
 	std::ofstream copyfile(filename);
 	std::ifstream inf(m_filename);
 	char ch;
 	int i = 0;
-	m_copyname = filename;
 
 	while (i < 55) {
 		i++;
 		if (i == offset) {
-			ch = value;
+			//ch = value;
+			//ch = inf.get();
+			printf("[%d]0x%x\n", i, ch);
 		}
 		else {
 			ch = inf.get();
@@ -282,14 +284,13 @@ void BitMap::attachRawData(char* filename)
 void BitMap::convert24BitTo16Bit(char * filename)
 {
 	//makeCopy(filename);
-	makeHeader(filename);
+	//makeHeader(filename);
 	changeHeader(filename, 29, 16);
-	attachRawData(filename);
+	//attachRawData(filename);
 
 	std::ofstream of;
 	of.open(filename, std::ios_base::app);
 
-#if 0	
 	std::vector<unsigned int> v;
 	unsigned char red;
 	unsigned char green;
@@ -299,7 +300,7 @@ void BitMap::convert24BitTo16Bit(char * filename)
 	int y = 0;
 
 	for (int i = 0;i < m_pixelArraySize;i++) {
-		std::cout << "x : " << x << "; y : " << y << " (" << i << ")" << std::endl;
+		//std::cout << "x : " << x << "; y : " << y << " (" << i << ")" << std::endl;
 		x = i % m_rowSize;
 		y = i / m_rowSize;
 		v = getPixel(x, y);
@@ -311,7 +312,6 @@ void BitMap::convert24BitTo16Bit(char * filename)
 		writePixel(filename, x, y, pixel16);
 	}
 
-#endif
 	of.close();
 }
 
