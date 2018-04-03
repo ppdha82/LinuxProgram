@@ -198,7 +198,7 @@ let @s='bi${ea}'
 "au! Syntax mixed  so $vim/syntax/cmix.vim
 let g:neocomplcache_enable_at_startup=1
 " Install Vundle
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 Plugin 'ctags.vim'
