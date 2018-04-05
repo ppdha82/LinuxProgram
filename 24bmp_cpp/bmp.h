@@ -56,6 +56,7 @@ class BitMap {
 		int m_pixelArraySize;
 
 		unsigned char* m_pixelData;
+		unsigned char* m_copyPixelData;
 
 		char * m_copyname;
 		const char * m_filename;
@@ -150,6 +151,7 @@ BitMap::BitMap( const char * filename) {
 	m_pixelArraySize = m_rowSize* abs(m_height);
 	std::cout << "data size : " << m_pixelArraySize << std::endl;
 	m_pixelData = new unsigned char [m_pixelArraySize];
+	m_copyPixelData = new unsigned char [m_pixelArraySize];
 
 	inf.seekg(m_pixelArrayOffset,ios::beg);
 	for(int i=0;i<m_pixelArraySize;i++)
@@ -270,11 +272,15 @@ void BitMap::attachRawData(char* filename)
 	of.open(filename, std::ios_base::app);
 	std::ifstream inf(m_filename);
 	char ch;
+	int i = 0;
 	inf.seekg(55, std::ios_base::beg);
 
 	while (inf) {
 		ch = inf.get();
 		of.put(ch);
+		if (i >= m_pixelArraySize) continue;
+		m_copyPixelData[i]=ch; 
+		i++;
 	}
 
 	inf.close();
@@ -329,8 +335,8 @@ void BitMap::writePixel(char * filename, int x,int y, unsigned int pixel16)
 	file<< (unsigned char)(pixel16 & 0xff);
 
 	// edits data in pixelData array 
-	m_pixelData[m_rowSize*y+2*x+1] = (unsigned char)(pixel16 >> 8);
-	m_pixelData[m_rowSize*y+2*x+0] = (unsigned char)(pixel16 & 0xff);
+	m_copyPixelData[m_rowSize*y+2*x+1] = (unsigned char)(pixel16 >> 8);
+	m_copyPixelData[m_rowSize*y+2*x+0] = (unsigned char)(pixel16 & 0xff);
 
 	file.close();
 }
