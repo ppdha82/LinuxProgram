@@ -213,8 +213,10 @@ Bundle 'git://git.wincent.com/command-t.git'
 Plugin 'AutoComplPop'
 Plugin 'snipMate'
 Plugin 'Source-Explorer-srcexpl.vim'
-
+Plugin 'mattn/emmet-vim'
 Plugin 'sudo.vim'
+
+Plugin 'HTML.zip'
 
 "git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdtree-git-plugin
 Plugin 'nerdtree-git-plugin'
