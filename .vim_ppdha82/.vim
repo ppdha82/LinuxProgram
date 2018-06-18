@@ -1,1 +1,1 @@
-.vim/vim-master/.vim
+vim-master/.vim

@@ -197,9 +197,13 @@ let @s='bi${ea}'
 
 "au! Syntax mixed  so $vim/syntax/cmix.vim
 let g:neocomplcache_enable_at_startup=1
+" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 " Install Vundle
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+"set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
+Plugin 'gmarik/vundle'
+Plugin 'git://git.wincent.com/command-t.git'
 
 Plugin 'ctags.vim'
 Plugin 'cscope.vim'
@@ -208,18 +212,16 @@ Plugin 'The-NERD-tree'
 Plugin 'pathogen.vim'
 Plugin 'neocomplcache'
 
-Bundle 'gmarik/vundle'
-Bundle 'git://git.wincent.com/command-t.git'
 Plugin 'AutoComplPop'
 Plugin 'snipMate'
 Plugin 'Source-Explorer-srcexpl.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'sudo.vim'
 
-Plugin 'HTML.zip'
+"Plugin 'HTML.zip'
 
 "git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdtree-git-plugin
-Plugin 'nerdtree-git-plugin'
+"Plugin 'nerdtree-git-plugin'
 
 "git config --global diff.tool vimdiff
 "git config --global merge.tool vimdiff
@@ -230,12 +232,13 @@ Plugin 'nerdtree-git-plugin'
 Plugin 'git-diff'
 
 "Plugin 'fugitive.vim'
-"Plugin 'github-theme'
-"Plugin 'gitvimdiff'
-"Plugin 'git-commit'
-"Plugin 'gitdiff.vim'
-"Plugin 'gitvimrc.vim'
+Plugin 'github-theme'
+Plugin 'gitvimdiff'
+Plugin 'git-commit'
+Plugin 'gitdiff.vim'
+Plugin 'gitvimrc.vim'
 
+call vundle#end()
 " pathogen
 execute pathogen#infect()
 
