@@ -1,0 +1,11 @@
+Essential needs for building chatting program
+1. install cmake
+=> sudo apt install cmake
+2. install gtest
+=> sudo apt install libgtest-dev
+3. make directory build under server and client.
+=> mkdir build
+4. generate cmakefile
+=> cd build; cmake ..
+5. run building
+=> make
