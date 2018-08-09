@@ -5,6 +5,7 @@ Essential needs for building chatting program
 => sudo apt install libgtest-dev
    cd /usr/src/gtest; cmake CMakeLists.txt
    make
+   sudo cp *.a /usr/lib
 3. make directory build under server and client.
 => mkdir build
 4. generate cmakefile
