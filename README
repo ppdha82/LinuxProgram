@@ -1,3 +1,5 @@
+# chattingProgram
+<pre><code>
 Essential needs for building chatting program
 1. install cmake
 => sudo apt install cmake
@@ -12,3 +14,4 @@ Essential needs for building chatting program
 => cd build; cmake ..
 5. run building
 => make
+</code></pre>
