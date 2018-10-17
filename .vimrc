@@ -197,6 +197,8 @@ let @s='bi${ea}'
 
 "au! Syntax mixed  so $vim/syntax/cmix.vim
 let g:neocomplcache_enable_at_startup=1
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 " git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 " Install Vundle
 "set rtp+=~/.vim/bundle/Vundle.vim/
@@ -206,7 +208,6 @@ Plugin 'gmarik/vundle'
 Plugin 'git://git.wincent.com/command-t.git'
 
 Plugin 'ctags.vim'
-Plugin 'cscope.vim'
 Plugin 'taglist.vim'
 Plugin 'The-NERD-tree'
 Plugin 'pathogen.vim'
@@ -214,9 +215,9 @@ Plugin 'neocomplcache'
 
 Plugin 'AutoComplPop'
 Plugin 'snipMate'
-Plugin 'Source-Explorer-srcexpl.vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'sudo.vim'
+"Plugin 'Source-Explorer-srcexpl.vim'
+"Plugin 'mattn/emmet-vim'
+"Plugin 'sudo.vim'
 
 "Plugin 'HTML.zip'
 
@@ -229,14 +230,35 @@ Plugin 'sudo.vim'
 "git config --global alias.d difftool
 
 "http://www.vim.org/scripts/script.php?script_id=1846
-Plugin 'git-diff'
+"Plugin 'git-diff'
 
 "Plugin 'fugitive.vim'
-Plugin 'github-theme'
-Plugin 'gitvimdiff'
-Plugin 'git-commit'
-Plugin 'gitdiff.vim'
-Plugin 'gitvimrc.vim'
+"Plugin 'github-theme'
+"Plugin 'gitvimdiff'
+"Plugin 'git-commit'
+"Plugin 'gitdiff.vim'
+"Plugin 'gitvimrc.vim'
+
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+Plugin 'tommcdo/vim-lion'
+
+Plugin 'plasticboy/vim-markdown'
+Plugin 'Yggdroot/indentLine'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'majutsushi/tagbar'
+Plugin 'MultipleSearch'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'SirVer/ultisnips'
+Plugin 'matchit.zip'
+Plugin 'airblade/vim-rooter'
+Plugin 'rking/ag.vim'
 
 call vundle#end()
 " pathogen
@@ -245,4 +267,5 @@ execute pathogen#infect()
 " It happens so oftern that I type :Q instead of :q that it makes sense to make :Q just working. :Q is not used
 " anyway by vim.
 "command Q q
+colorscheme jellybeans
 
