@@ -21,7 +21,7 @@ set shiftwidth=4     " indent also with 4 spaces
 " wrap lines at 120 chars. 80 is somewaht antiquated with nowadays displays.
 set textwidth=120
 set nowrapscan " 검색할 때 문서의 끝에서 처음으로 안돌아감
-set visualbell " 키를 잘못눌렀을 때 화면 프레시
+"set visualbell " 키를 잘못눌렀을 때 화면 프레시
 set incsearch "  키워드 입력시 점진적 검색할
 "set ic			" 검색할 때 대/소문자 구분 안함. set noic : 대/소문자 구분함.
 set makeprg=make
@@ -118,25 +118,26 @@ nmap <F2> :w<CR>
 " in insert mode F2 will exit insert, save, enters insert again
 imap <F2> <ESC>:w<CR>i
 " run Tlist and NERDTree
-nmap <F3> :Tlist<CR> <C-w>h <C-w><S-l> <C-W>45\|:NERDTree<CR> <C-w>35\|
+"nmap <F3> :Tlist<CR> <C-w>h <C-w><S-l> <C-W>45\|:NERDTree<CR> <C-w>35\|
+nmap <F3> :NERDTree<CR>:Tlist<CR> <C-w>h <C-w><S-l> <C-W>45\| <C-w>h <C-w>h <CR>
 imap <F3> <ESC> :Tlist<CR> <C-w>h <C-w><S-l> <C-W>45\|:NERDTree<CR> <C-w>35\|
 " recreate cscope file with F4
 nmap <F4> :!mkcscope.sh<CR>
 imap <F4> <ESC>:!mkcscope.sh<CR>
 " recreate tags file with F5
-map <F5> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F5> :!mkctags.sh<CR>
 " create doxygen comment
 "map <F6> :Dox<CR>
 " execute cscope
 nmap <F6> :!rscope.sh<CR>
 imap <F6> <ESC>:!rscope.sh<CR>
 " build using makeprg with <F7>
-nmap <F7> :!make install -j8<CR>
+nmap <F7> :wqa!<CR>
 " build using makeprg with <F7>, in insert mode exit to command mode, save and compile
-imap <F7> <ESC>:w<CR>:!make install -j8<CR>
+imap <F7> <ESC>:wqa!<CR>
 " build using makeprg with <S-F7>
-nmap <S-F7> :!make clean<CR>
-imap <S-F7> <ESC>:w<CR>:!make clean<CR>
+nmap <S-F7> :qa!<CR>
+imap <S-F7> <ESC>:qa!<CR>
 map <C-F7> :!make gui rs485_422 net config -j8<CR>
 "imap <C-F7> <ESC>:w<CR>:!make gui rs485_422 net config -j8<CR>
 " run svn diff to diff text 
@@ -241,7 +242,7 @@ Plugin 'snipMate'
 
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
