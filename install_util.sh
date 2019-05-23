@@ -5,8 +5,12 @@ sudo apt install net-tools -y
 sudo apt install vim -y
 sudo apt install git -y
 sudo apt install minicom -y
+sudo apt install filezilla -y
+sudo apt install samba -y
+
 # install vs code - code_1.29.1-1542309157_amd64.deb
 # install synergy - synergy-v1.8.8-stable-Linux-i686.deb
+sudo apt install synergy -y
 # install chrome - google-chrome-stable_current_amd64.deb
 sudo dpkg -S libXrandr.so.2
 sudo apt-cache show libxrandr2
@@ -20,6 +24,14 @@ sudo apt install lib32stdc++6 -y
 sudo apt install lib32z1 -y
 
 # need to login by root
+echo "[ppdha82]
+comment = \"Deukhyun Park\"
+path = /home/ppdha82
+valid user = ppdha82
+writable = yes
+create mask = 0644
+directory mask = 0755" > /etc/samba/smb.conf
+
 echo "# / was on /dev/sdb1 during installation
 UUID=3478d0c5-3ac6-41df-a601-edcd3adf7609 /home/ppdha82/Downloads       ext4    defaults 0       0
 # / was on /dev/sdb3 during installation
