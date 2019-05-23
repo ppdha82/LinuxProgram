@@ -7,6 +7,9 @@ sudo apt install git -y
 sudo apt install minicom -y
 sudo apt install filezilla -y
 sudo apt install samba -y
+sudo apt install xinetd -y
+sudo apt install tftp -y
+sudo apt install tftpd -y
 
 # install vs code - code_1.29.1-1542309157_amd64.deb
 # install synergy - synergy-v1.8.8-stable-Linux-i686.deb
@@ -22,6 +25,22 @@ sudo apt install gcc -y
 sudo apt install make -y
 sudo apt install lib32stdc++6 -y
 sudo apt install lib32z1 -y
+
+sudo mkdir /tftpboot
+
+echo "service tftp
+{
+    socket_type     = dgram
+    protocol        = udp
+    wait            = yes
+    user            = root
+    server          = /usr/sbin/in.tftpd
+    server_args     = -s /tftpboot
+    disable         = no
+    per_source      = 11
+    cps             = 100 2
+    flags           = IPv4
+}" > /etc/xinetd.d/tftp
 
 # need to login by root
 echo "[ppdha82]
