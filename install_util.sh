@@ -13,6 +13,9 @@ sudo apt install tftpd -y
 sudo apt install nfs-common -y
 sudo apt install nfs-kernel-server -y
 sudo apt install rpcbind -y
+sudo apt install curl -y
+sudo apt install wireshark -y
+sudo apt install vsftpd -y
 
 # install vs code - code_1.29.1-1542309157_amd64.deb
 # install synergy - synergy-v1.8.8-stable-Linux-i686.deb
@@ -48,6 +51,9 @@ echo "service tftp
     flags           = IPv4
 }" > /etc/xinetd.d/tftp
 sudo /etc/init.d/xinetd restart
+
+echo "write_enable=YES" > /etc/vsftpd.conf
+sudo service vsftpd restart
 
 # need to login by root
 echo "[ppdha82]
