@@ -16,6 +16,7 @@ sudo apt install rpcbind -y
 sudo apt install curl -y
 sudo apt install wireshark -y
 sudo apt install vsftpd -y
+sudo apt install u-boot-tools -y
 
 # install vs code - code_1.29.1-1542309157_amd64.deb
 # install synergy - synergy-v1.8.8-stable-Linux-i686.deb
