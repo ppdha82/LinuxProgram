@@ -65,6 +65,7 @@ valid user = ppdha82
 writable = yes
 create mask = 0644
 directory mask = 0755" > /etc/samba/smb.conf
+sudo /etc/init.d/smbd restart
 
 echo "# / was on /dev/sdb1 during installation
 UUID=3478d0c5-3ac6-41df-a601-edcd3adf7609 /home/ppdha82/Downloads       ext4    defaults 0       0
