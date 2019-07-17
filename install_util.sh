@@ -19,6 +19,12 @@ sudo apt install vsftpd -y
 sudo apt install u-boot-tools -y
 sudo apt install tree -y
 
+# 64bit Cross-compile
+sudo apt install gcc-multilib -y
+sudo apt install g++-multilib -y
+
+sudo apt install lib32z1 -y
+
 # install vs code - code_1.29.1-1542309157_amd64.deb
 # install synergy - synergy-v1.8.8-stable-Linux-i686.deb
 sudo apt install synergy -y
@@ -34,10 +40,12 @@ sudo apt install make -y
 sudo apt install lib32stdc++6 -y
 sudo apt install lib32z1 -y
 
+# setup nfs server
 echo "/home/ppdha82/Project   *(rw,sync,no_root_squash,no_all_squash)" > /etc/exports
 sudo /etc/init.d/rpcbind restart
 sudo /etc/init.d/nfs-kernel-server restart
 
+# setup tftpboot
 sudo mkdir /tftpboot
 echo "service tftp
 {
