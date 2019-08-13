@@ -64,6 +64,9 @@ set makeprg=mk
 " configure printer
 set pdev=HP_Officejet_Pro_8600
 
+" use clipboard for vim register
+set cb=unnamed
+
 " Set ultisnips triggers
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -115,33 +118,32 @@ let g:indentLine_faster = 1
 imap <S-Tab> <C-o><<
 " in normal mode F2 will save the file
 nmap <F2> :w<CR>
+nmap <S-F2> :wq<CR>
 " in insert mode F2 will exit insert, save, enters insert again
 imap <F2> <ESC>:w<CR>i
+imap <S-F2> <ESC>:wq<CR>i
 " run Tlist and NERDTree
-"nmap <F3> :Tlist<CR> <C-w>h <C-w><S-l> <C-W>45\|:NERDTree<CR> <C-w>35\|
-nmap <F3> :NERDTree<CR>:Tlist<CR> <C-w>h <C-w><S-l> <C-W>45\| <C-w>h <C-w>h <CR>
-imap <F3> <ESC> :Tlist<CR> <C-w>h <C-w><S-l> <C-W>45\|:NERDTree<CR> <C-w>35\|
+"nmap <F3> :Tlist<CR> <C-w>h <C-w><S-l> <C-w>45\|:NERDTree<CR> <C-w>35\|
+nmap <F3> :Tlist<CR> <C-w>h <C-w><S-l> <C-w>45\|
+"nmap <F3> :NERDTree<CR>:Tlist<CR> <C-w>h <C-w><S-l> <C-W>45\| <C-w>h <C-w>h
+imap <F3> <ESC> :Tlist<CR> <C-w>h <C-w><S-l> <C-w>45\|:NERDTree<CR> <C-w>35\|
 " recreate cscope file with F4
 nmap <F4> :!mkcscope.sh<CR>
 imap <F4> <ESC>:!mkcscope.sh<CR>
 " recreate tags file with F5
 map <F5> :!mkctags.sh<CR>
-" create doxygen comment
-"map <F6> :Dox<CR>
 " execute cscope
 nmap <F6> :!rscope.sh<CR>
 imap <F6> <ESC>:!rscope.sh<CR>
 " build using makeprg with <F7>
-nmap <F7> :wqa!<CR>
+nmap <F7> :NERDTree<CR>
 " build using makeprg with <F7>, in insert mode exit to command mode, save and compile
-imap <F7> <ESC>:wqa!<CR>
+"imap <F7> <ESC>:wqa!<CR>
 " build using makeprg with <S-F7>
-nmap <S-F7> :qa!<CR>
-imap <S-F7> <ESC>:qa!<CR>
-map <C-F7> :!make gui rs485_422 net config -j8<CR>
-"imap <C-F7> <ESC>:w<CR>:!make gui rs485_422 net config -j8<CR>
+"nmap <S-F7> :qa!<CR>
+"imap <S-F7> <ESC>:qa!<CR>
 " run svn diff to diff text 
-map <F8> : !svn diff > diff<CR>
+map <F8> : !git diff > diff<CR>
 map <S-F8> : !git diff > diff<CR>
 " build all
 map <F9> : !make -j8<CR>
@@ -233,33 +235,35 @@ Plugin 'snipMate'
 "http://www.vim.org/scripts/script.php?script_id=1846
 "Plugin 'git-diff'
 
-"Plugin 'fugitive.vim'
 "Plugin 'github-theme'
 "Plugin 'gitvimdiff'
 "Plugin 'git-commit'
 "Plugin 'gitdiff.vim'
 "Plugin 'gitvimrc.vim'
 
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'vim-airline/vim-airline'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/syntastic'
-Plugin 'tommcdo/vim-lion'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'tommcdo/vim-lion'
 
-Plugin 'plasticboy/vim-markdown'
-Plugin 'Yggdroot/indentLine'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'majutsushi/tagbar'
-Plugin 'MultipleSearch'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'SirVer/ultisnips'
-Plugin 'matchit.zip'
-Plugin 'airblade/vim-rooter'
-Plugin 'rking/ag.vim'
+"Plugin 'plasticboy/vim-markdown'
+"Plugin 'Yggdroot/indentLine'
+"Plugin 'jiangmiao/auto-pairs'
+"Plugin 'majutsushi/tagbar'
+"Plugin 'MultipleSearch'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'terryma/vim-multiple-cursors'
+""Plugin 'SirVer/ultisnips'
+"Plugin 'matchit.zip'
+"Plugin 'airblade/vim-rooter'
+"Plugin 'rking/ag.vim'
+
+"scheme plugin
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 " pathogen
@@ -269,4 +273,4 @@ execute pathogen#infect()
 " anyway by vim.
 "command Q q
 colorscheme jellybeans
-
+"colorscheme solarized
