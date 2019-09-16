@@ -265,6 +265,10 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'altercation/vim-colors-solarized'
 
+"fzf plugin
+"git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+"~/.fzf/install
+set rtp+=~/.fzf
 call vundle#end()
 " pathogen
 execute pathogen#infect()
