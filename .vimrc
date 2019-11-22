@@ -174,6 +174,7 @@ else
   map <M-Down> ]s
   map <M-Up> [s
 endif
+nnoremap <C-p> :Files<Cr>
 
 " Taglist
 let Tlist_WinWidth = 50
@@ -200,17 +201,80 @@ let @s='bi${ea}'
 
 "au! Syntax mixed  so $vim/syntax/cmix.vim
 let g:neocomplcache_enable_at_startup=1
+"fzf
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+
+let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
+let g:FuzzyFinderOptions.Base.ignore_case = 1
+let g:FuzzyFinderOptions.Base.abbrev_map  = {
+            \   '\C^VR' : [
+            \     '$VIMRUNTIME/**',
+            \     '~/.vim/**',
+            \     '$VIM/.vim/**',
+            \     '$VIM/vimfiles/**',
+            \   ],
+            \ }
+
+let g:FuzzyFinderOptions.MruFile.max_item = 50
+let g:FuzzyFinderOptions.MruCmd.max_item = 50
+
+let g:fuf_coveragefile_globPatterns = ['~/bin/**/*', '~/bin/rc/**/*']
+
+let g:fuf_modesDisable = []
+let g:fuf_mrufile_maxItem = 400
+let g:fuf_mrucmd_maxItem = 400
+nnoremap  sj     :FufBuffer
+nnoremap  sk     :FufFileWithCurrentBufferDir
+nnoremap  sK     :FufFileWithFullCwd
+nnoremap  s :FufFile
+nnoremap  sl     :FufCoverageFile
+nnoremap  sL     :FufCoverageFileChange
+nnoremap  s :FufCoverageFileRegister
+nnoremap  sd     :FufDirWithCurrentBufferDir
+nnoremap  sD     :FufDirWithFullCwd
+nnoremap  s :FufDir
+nnoremap  sn     :FufMruFile
+nnoremap  sN     :FufMruFileInCwd
+nnoremap  sm     :FufMruCmd
+nnoremap  su     :FufBookmarkFile
+nnoremap  s :FufBookmarkFileAdd
+vnoremap  s :FufBookmarkFileAddAsSelectedText
+nnoremap  si     :FufBookmarkDir
+nnoremap  s :FufBookmarkDirAdd
+nnoremap  st     :FufTag
+nnoremap  sT     :FufTag!
+nnoremap  s :FufTagWithCursorWord!
+nnoremap  s,     :FufBufferTag
+nnoremap  s<     :FufBufferTag!
+vnoremap  s,     :FufBufferTagWithSelectedText!
+vnoremap  s<     :FufBufferTagWithSelectedText
+nnoremap  s}     :FufBufferTagWithCursorWord!
+nnoremap  s.     :FufBufferTagAll
+nnoremap  s>     :FufBufferTagAll!
+vnoremap  s.     :FufBufferTagAllWithSelectedText!
+vnoremap  s>     :FufBufferTagAllWithSelectedText
+nnoremap  s]     :FufBufferTagAllWithCursorWord!
+nnoremap  sg     :FufTaggedFile
+nnoremap  sG     :FufTaggedFile!
+nnoremap  so     :FufJumpList
+nnoremap  sp     :FufChangeList
+nnoremap  sq     :FufQuickfix
+nnoremap  sy     :FufLine
+nnoremap  sh     :FufHelp
+nnoremap  se     :FufEditDataFile
+nnoremap  sr     :FufRenewCache
+
 " git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 " Install Vundle
 "set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.vim/bundle/fzf.vim/
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'git://git.wincent.com/command-t.git'
 
-Plugin 'ctags.vim'
+"Plugin 'ctags.vim'
 Plugin 'taglist.vim'
 Plugin 'The-NERD-tree'
 Plugin 'pathogen.vim'
@@ -264,6 +328,10 @@ Plugin 'tpope/vim-fugitive'
 "scheme plugin
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'FuzzyFinder'
+Plugin 'matchit.zip'
+Plugin 'rking/ag.vim'
+Plugin 'MultipleSearch'
 
 "fzf plugin
 "git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf

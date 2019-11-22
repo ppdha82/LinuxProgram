@@ -40,6 +40,13 @@ sudo apt install make -y
 sudo apt install lib32stdc++6 -y
 sudo apt install lib32z1 -y
 
+# thunderbird link
+ln -s ~/Downloads/.thunderbird ~/.thunderbird
+
+# vscode link
+ln -s ~/Project/.vscode ~/.vscode
+ln -s ~/Project/.vscode-cpptools ~/.vscode-cpptools
+
 # setup nfs server
 echo "/home/ppdha82/Project   *(rw,sync,no_root_squash,no_all_squash)" > /etc/exports
 sudo /etc/init.d/rpcbind restart

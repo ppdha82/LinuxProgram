@@ -16,7 +16,11 @@ DIR_005=005_ipm-hi
 DIR_006=006_ipm-hi
 DIR_007=007_ipm-hi
 DIR_008=008_ipm-hi
-DIR_009=009_ipm-hi_for_generating_firmware
+DIR_009=009_ipm-hi
+DIR_010=010_ipm-hi
+DIR_011=011_ipm-hi
+DIR_012=012_ipm-hi
+DIR_013=013_ipm-hi
 
 DATE_LOG=`date`"\n"
 
@@ -25,6 +29,13 @@ function git_pull() {
 	${GIT_PULL} >> ${LOG_FILE}
 	echo -e ${DATE_LOG} >> ${LOG_FILE}
 }
+
+function git_pull_atm() {
+	echo ${PWD} >> ${LOG_FILE}
+	${GIT_PULL_ATM} >> ${LOG_FILE}
+	echo -e ${DATE_LOG} >> ${LOG_FILE}
+}
+
 cd ${PROJECT_PATH}/${DIR_001}
 echo -e ${DATE_LOG} >> ${LOG_FILE}
 
@@ -44,7 +55,7 @@ cd ${PROJECT_PATH}/${DIR_006}
 git_pull
 
 cd ${PROJECT_PATH}/${DIR_007}
-git_pull
+git_pull_atm
 
 cd ${PROJECT_PATH}/${DIR_008}
 git_pull
@@ -52,3 +63,14 @@ git_pull
 cd ${PROJECT_PATH}/${DIR_009}
 git_pull
 
+cd ${PROJECT_PATH}/${DIR_010}
+git_pull
+
+cd ${PROJECT_PATH}/${DIR_011}
+git_pull_atm
+
+cd ${PROJECT_PATH}/${DIR_012}
+git_pull
+
+cd ${PROJECT_PATH}/${DIR_013}
+git_pull
