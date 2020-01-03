@@ -18,6 +18,7 @@ sudo apt install wireshark -y
 sudo apt install vsftpd -y
 sudo apt install u-boot-tools -y
 sudo apt install tree -y
+sudo apt install dos2unix -y
 
 # 64bit Cross-compile
 sudo apt install gcc-multilib -y
