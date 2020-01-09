@@ -1,11 +1,11 @@
 # run following command for using trello
-sudo apt install libgconf2-4 -y
+sudo apt install libgconf-2-4 -y
 unzip Trello-llinux-0.1.9.zip -d /home/ppdha82/Project/LinuxProgram/trello
 
 echo "
 [Desktop Entry]
 Name=Trello
-Exec=/home/ppdha82/Project/LinuxProgram/trello
+Exec=/home/ppdha82/Project/LinuxProgram/trello/Trello
 Terminal=false
 Type=Application
 Icon=/home/ppdha82/Project/LinuxProgram/trello/resources/app/static/Icon.png
