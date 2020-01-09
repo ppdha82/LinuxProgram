@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Trello
-Exec=/home/ppdha82/Downloads/Trello
+Exec=/home/ppdha82/Downloads/trello/Trello
 Terminal=false
 Type=Application
-Icon=/home/ppdha82/Downloads/Trello/resources/app/static/Icon.png
+Icon=/home/ppdha82/Downloads/trello/resources/app/static/Icon.png
