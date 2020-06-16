@@ -5,8 +5,8 @@ unzip Trello-linux-0.2.0.zip -d /home/ppdha82/Project/LinuxProgram/trello
 echo "
 [Desktop Entry]
 Name=Trello
-Exec=/home/ppdha82/Project/LinuxProgram/trello/trello/Trello
+Exec=/home/ppdha82/Project/LinuxProgram/trello/Trello
 Terminal=false
 Type=Application
-Icon=/home/ppdha82/Project/LinuxProgram/trello/trello/resources/app/static/Icon.png
+Icon=/home/ppdha82/Project/LinuxProgram/trello/resources/app/static/Icon.png
 " > /home/ppdha82/.local/share/applications/trello.desktop
