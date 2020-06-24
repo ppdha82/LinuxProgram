@@ -5,7 +5,6 @@ sudo apt install net-tools -y
 sudo apt install vim -y
 sudo apt install git -y
 sudo apt install minicom -y
-sudo apt install filezilla -y
 sudo apt install samba -y
 sudo apt install xinetd -y
 sudo apt install tftp -y
@@ -19,6 +18,7 @@ sudo apt install vsftpd -y
 sudo apt install u-boot-tools -y
 sudo apt install tree -y
 sudo apt install dos2unix -y
+sudo apt install exuberant-ctags
 
 # 64bit Cross-compile
 sudo apt install gcc-multilib -y
@@ -40,6 +40,10 @@ sudo apt install gcc -y
 sudo apt install make -y
 sudo apt install lib32stdc++6 -y
 sudo apt install lib32z1 -y
+
+# vimrc link
+ln -s ~/Project/LinuxProgram/.vim_ppdha82 ~/.vim
+ln -s ~/Project/LinuxProgram/.vimrc ~/.vimrc
 
 # thunderbird link
 ln -s ~/Downloads/.thunderbird ~/.thunderbird
