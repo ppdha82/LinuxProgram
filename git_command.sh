@@ -21,6 +21,8 @@ DIR_010=010_ipm-hi
 DIR_011=011_ipm-hi
 DIR_012=012_ipm-hi
 DIR_013=013_ipm-hi
+DIR_014=014_ipm-hi
+DIR_015=015_ipm-hi
 
 DATE_LOG=`date`"\n"
 
@@ -55,7 +57,7 @@ cd ${PROJECT_PATH}/${DIR_006}
 git_pull
 
 cd ${PROJECT_PATH}/${DIR_007}
-git_pull_atm
+git_pull
 
 cd ${PROJECT_PATH}/${DIR_008}
 git_pull
@@ -67,10 +69,16 @@ cd ${PROJECT_PATH}/${DIR_010}
 git_pull
 
 cd ${PROJECT_PATH}/${DIR_011}
-git_pull_atm
+git_pull
 
 cd ${PROJECT_PATH}/${DIR_012}
 git_pull
 
 cd ${PROJECT_PATH}/${DIR_013}
+git_pull
+
+cd ${PROJECT_PATH}/${DIR_014}
+git_pull
+
+cd ${PROJECT_PATH}/${DIR_014}
 git_pull
