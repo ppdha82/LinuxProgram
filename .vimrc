@@ -273,6 +273,8 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 Plugin 'gmarik/vundle'
 Plugin 'git://git.wincent.com/command-t.git'
+" install L9 library
+" git clone https://github.com/eparreno/vim-l9.git ~/.vim/bundle/vim-l9
 
 "Plugin 'ctags.vim'
 Plugin 'taglist.vim'

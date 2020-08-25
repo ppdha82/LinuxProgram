@@ -5,7 +5,6 @@ sudo apt install net-tools -y
 sudo apt install vim -y
 sudo apt install git -y
 sudo apt install minicom -y
-sudo apt install filezilla -y
 sudo apt install samba -y
 sudo apt install xinetd -y
 sudo apt install tftp -y
@@ -19,6 +18,7 @@ sudo apt install vsftpd -y
 sudo apt install u-boot-tools -y
 sudo apt install tree -y
 sudo apt install dos2unix -y
+sudo apt install exuberant-ctags
 
 # 64bit Cross-compile
 sudo apt install gcc-multilib -y
@@ -40,6 +40,10 @@ sudo apt install gcc -y
 sudo apt install make -y
 sudo apt install lib32stdc++6 -y
 sudo apt install lib32z1 -y
+
+# vimrc link
+ln -s ~/Project/LinuxProgram/.vim_ppdha82 ~/.vim
+ln -s ~/Project/LinuxProgram/.vimrc ~/.vimrc
 
 # thunderbird link
 ln -s ~/Downloads/.thunderbird ~/.thunderbird
@@ -88,7 +92,7 @@ UUID=3478d0c5-3ac6-41df-a601-edcd3adf7609 /home/ppdha82/Downloads       ext4    
 # / was on /dev/sdb3 during installation
 UUID=c151863a-f32f-40c2-b73f-6826521ff14a /home/ppdha82/Project         ext4    defaults 0       0
 # / was on /dev/sdb3 during installation
-UUID=b0a79762-4a1a-4f74-8fd8-abb8f46c72b3 /opt                          ext4    defaults 0       0" >> /etc/fstab
+UUID=fec04146-b128-435f-a5f2-3b7069e25ece /opt                          ext4    defaults 0       0" >> /etc/fstab
 
 echo "export PATH=\"/opt/hisi-linux/x86-arm/arm-hisiv500-linux/target/bin:$PATH\"" >> /etc/profile
 echo "source /etc/profile" >> /etc/bash_completion
