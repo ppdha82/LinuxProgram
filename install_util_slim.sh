@@ -5,9 +5,6 @@ sudo apt install net-tools -y
 sudo apt install vim -y
 sudo apt install git -y
 sudo apt install samba -y
-sudo apt install xinetd -y
-sudo apt install tftp -y
-sudo apt install tftpd -y
 sudo apt install nfs-common -y
 sudo apt install nfs-kernel-server -y
 sudo apt install rpcbind -y
@@ -16,6 +13,13 @@ sudo apt install vsftpd -y
 sudo apt install u-boot-tools -y
 sudo apt install tree -y
 sudo apt install dos2unix -y
+
+# before ubuntu v20.04
+sudo apt install xinetd -y
+sudo apt install tftp -y
+sudo apt install tftpd -y
+# until ubuntu v20.04
+sudo apt install tftpd-hpa -y
 
 # 64bit Cross-compile
 sudo apt install gcc-multilib -y
@@ -35,7 +39,7 @@ echo "/home/ppdha82/Project   *(rw,sync,no_root_squash,no_all_squash)" > /etc/ex
 sudo /etc/init.d/rpcbind restart
 sudo /etc/init.d/nfs-kernel-server restart
 
-# setup tftpboot
+# setup tftpboot until ubuntu v18.10
 sudo mkdir /tftpboot
 echo "service tftp
 {
@@ -51,6 +55,11 @@ echo "service tftp
     flags           = IPv4
 }" > /etc/xinetd.d/tftp
 sudo /etc/init.d/xinetd restart
+# setup tftpboot from ubuntu v20.04
+sudo chown tftp:tftp /srv/tftp
+# echo "TFTP_OPTIONS="--secure --create" >> /etc/default/tftpd-hpa
+systemctl restart tftpd-hpa
+systemctl status tftpd-hpa
 
 echo "write_enable=YES" > /etc/vsftpd.conf
 sudo service vsftpd restart
