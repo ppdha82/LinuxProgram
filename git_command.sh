@@ -8,9 +8,9 @@ PROJECT_PATH=/home/ppdha82/Project
 GIT_PULL=('git pull origin master')
 GIT_PULL_ATM=('git pull origin sdk-v1.0.4.0')
 LOG_FILE=${LOG_PATH}/log.txt
-DIR_001=001_ipm-hi_VPN_build
-DIR_002=002_ipm-hi_TTA
-DIR_003=003_ipm-hi_VPN_build
+DIR_001=001_ipm-hi
+DIR_002=002_ipm-hi
+DIR_003=003_ipm-hi
 DIR_004=004_ipm-hi
 DIR_005=005_ipm-hi
 DIR_006=006_ipm-hi
@@ -80,5 +80,5 @@ git_pull
 cd ${PROJECT_PATH}/${DIR_014}
 git_pull
 
-cd ${PROJECT_PATH}/${DIR_014}
+cd ${PROJECT_PATH}/${DIR_015}
 git_pull
