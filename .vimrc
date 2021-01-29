@@ -292,7 +292,6 @@ Plugin 'snipMate'
 
 "git clone https://github.com/Xuyuanp/nerdtree-git-plugin.git ~/.vim/bundle/nerdtree-git-plugin
 "Plugin 'nerdtree-git-plugin'
-
 "git config --global diff.tool vimdiff
 "git config --global merge.tool vimdiff
 "git config --global difftool.prompt false
@@ -319,7 +318,7 @@ Plugin 'tpope/vim-fugitive'
 "Plugin 'jiangmiao/auto-pairs'
 "Plugin 'majutsushi/tagbar'
 "Plugin 'MultipleSearch'
-"Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 "Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'terryma/vim-multiple-cursors'
 ""Plugin 'SirVer/ultisnips'
