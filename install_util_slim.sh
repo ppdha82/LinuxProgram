@@ -13,6 +13,7 @@ sudo apt install vsftpd -y
 sudo apt install u-boot-tools -y
 sudo apt install tree -y
 sudo apt install dos2unix -y
+sudo apt install bc -y
 
 # before ubuntu v20.04
 sudo apt install xinetd -y

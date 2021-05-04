@@ -18,7 +18,8 @@ sudo apt install vsftpd -y
 sudo apt install u-boot-tools -y
 sudo apt install tree -y
 sudo apt install dos2unix -y
-sudo apt install exuberant-ctags
+sudo apt install exuberant-ctags -y
+sudo apt install bc -y
 
 # 64bit Cross-compile
 sudo apt install gcc-multilib -y
