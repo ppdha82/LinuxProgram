@@ -15,6 +15,11 @@ sudo apt install tree -y
 sudo apt install dos2unix -y
 sudo apt install bc -y
 
+# NOVATEK ubuntu v16.04
+sudo apt install bison
+sudo apt install flex
+sudo apt install device-tree-compiler
+
 # before ubuntu v20.04
 sudo apt install xinetd -y
 sudo apt install tftp -y
