@@ -16,10 +16,11 @@ sudo apt install dos2unix -y
 sudo apt install bc -y
 
 # NOVATEK ubuntu v16.04-server
-sudo apt install bison
-sudo apt install flex
-sudo apt install device-tree-compiler
-sudo apt install libssl-dev
+sudo apt install bison -y
+sudo apt install flex -y
+sudo apt install device-tree-compiler -y
+sudo apt install libssl-dev -y
+sudo apt install liblz4-tool -y
 
 # before ubuntu v20.04
 sudo apt install xinetd -y
