@@ -15,3 +15,7 @@ Essential needs for building chatting program
 5. run building
 => make
 </code></pre>
+
+
+# vscode keybinding path
+=> ~/.config/Code/User
